@@ -1,0 +1,436 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono";
+  font-style: italic;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  transition: 0.5s;
+}
+
+html,
+body {
+  box-sizing: inherit;
+  height: 100%;
+  background-color: #3c3c3c;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+}
+
+button {
+  border-radius: 0 !important;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.wrapper__lan,
+.wrapper__lan_async,
+.wrapper__lan_commitId {
+  display: none;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.wrapper__lan {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#openFolder {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#GetFiles {
+  display: none;
+  width: 100%;
+}
+
+.wrapper__lan:has(select),
+.wrapper__lan:has(select) + .wrapper__lan_commitId,
+.wrapper__lan_async:has(.wrapper__lan_item) {
+  display: flex;
+}
+
+.wrapper__lan_async:has(.wrapper__lan_item) + #GetFiles {
+  display: block;
+}
+
+.wrapper__lan_title {
+  margin-right: 10px;
+  color: #fff;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.wrapper__lan_lans {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  width: 100%;
+}
+
+.wrapper__lan_item {
+  display: flex;
+}
+
+.ui-checkbox + label {
+  margin: 0;
+  padding-left: 5px;
+}
+
+.wrapper__lan_item {
+  color: #fff;
+}
+
+select {
+  opacity: 1 !important;
+}
+
+.ui-select-button {
+  height: 40px;
+}
+
+.ui-select {
+  width: 100%;
+}
+
+.wrapper__left {
+  width: 300px;
+  height: 100vh;
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.wrapper__right {
+  flex: 1;
+  min-height: 100%;
+  padding: 20px;
+  margin-left: 300px;
+}
+
+.file-list {
+  list-style: none;
+}
+
+.file-list li {
+  list-style-type: none;
+  height: 60px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+}
+
+.file-list li p {
+  color: #fff;
+  font-size: 14px;
+}
+
+.file-list li + li {
+  margin-top: 10px;
+}
+
+.diff {
+  position: fixed;
+  inset: 0;
+  background-color: #3c3c3c;
+  z-index: 1000;
+}
+
+#compare {
+  width: 100%;
+  height: calc(100% - 60px);
+}
+
+.mergely-editor .CodeMirror {
+  border: 0 !important;
+}
+
+.CodeMirror {
+  background-color: #212121 !important;
+}
+
+.CodeMirror-gutters {
+  border: 0 !important;
+  background-color: #555 !important;
+}
+
+/* .CodeMirror pre.CodeMirror-line {
+    background-color: #000!important;
+  } */
+
+.mergely-editor .mergely.CodeMirror-gutter-background.current {
+  background-color: #000 !important;
+}
+
+#compare .CodeMirror {
+  line-height: 1.5;
+}
+
+.diff__header {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+}
+
+#save {
+  margin-left: auto;
+}
+
+.diff_left {
+  position: fixed;
+  top: 70px;
+  left: 45%;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  z-index: 10;
+  background-color: #2a80eb;
+}
+
+.diff_right {
+  position: fixed;
+  top: 70px;
+  left: 95%;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  z-index: 10;
+  background-color: #2a80eb;
+}
+
+[name="async-lan"] + label {
+  display: none;
+}
+
+[name="async-lan"]:checked + label + label {
+  background-color: #2a80eb;
+}
+
+[name="async-lan"] + label + label {
+  width: 40px;
+  height: 40px;
+  background-color: #212121;
+  text-align: center;
+  line-height: 40px;
+  padding: 0;
+}
+
+.wrapper__lan_async {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wrapper__lan_async .wrapper__lan_title {
+  margin-bottom: 20px;
+}
+
+.wrapper__lan_async .wrapper__lan_lans {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.ui-select-button {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.ui-select-datalist {
+  border-bottom-width: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+.commitIds {
+  border: 0 !important;
+  border-radius: 0 !important;
+  width: 100%;
+}
+
+.ui-tab-tab {
+  color: #fff;
+}
+
+.tab-content-btns {
+  margin-bottom: 10px;
+}
+
+.ui-tab-contents {
+  margin-top: 10px;
+}
+
+[contenteditable="true"] {
+  background-color: #fff;
+  color: #333;
+  border: 0;
+  outline: 0;
+}
+
+.wrapper__right_btns {
+  margin-bottom: 20px;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(33, 33, 33, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-main {
+  background-color: #fff;
+}
+
+.discard {
+  padding: 20px 30px;
+}
+
+.discard-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.discard-header p {
+  margin-right: 10px;
+}
+.discard-btns {
+  text-align: right;
+}
+
+.merge2 {
+  padding: 20px 30px;
+}
+
+.merge2-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.merge2-header .ui-select {
+  width: 300px !important;
+}
+
+.merge2-header .ui-select-button {
+  background-color: #f5f5f5;
+}
+
+.merge2-header p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.merge2-btns {
+  text-align: right;
+}
+
+.commitPush {
+  padding: 20px 30px;
+}
+
+.commitPush-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.commitPush-header .ui-select {
+  width: 120px !important;
+}
+
+.commitPush-header .ui-select-button {
+  background-color: #f5f5f5;
+}
+
+.commitPush-header p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.commitPush-btns {
+  text-align: right;
+}
+
+.commitPush-radio {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.commitPush-radio  .ui-radio + label {
+  margin-left: 0;
+  padding-left: 5px;
+}
+
+.commitPush-content input {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: #f5f5f5;
+}
+
+.website-name {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  display: none;
+}
+
+.new-path {
+  color: #2a80eb;
+}
+
+.ishandle {
+  outline: 1px dashed #2a80eb;
+  background-color: #555 !important;
+}
+
+.ui-tab-tabs {
+  border-bottom-color: #333;
+}

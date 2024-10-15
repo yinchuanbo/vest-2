@@ -1,0 +1,5 @@
+/node_modules/
+/.dea
+.idea/
+.vercel
+dist

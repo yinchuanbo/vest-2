@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Vest</title>
+    <link
+      rel="stylesheet"
+      href="https://qidian.gtimg.com/lulu/pure/css/common/ui.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/mergely.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body spellcheck="false">
+    <div class="wrapper">
+      <div class="wrapper__left">
+        <button class="ui-button" id="openFolder" data-type="primary">
+          Open Folder
+        </button>
+        <div class="wrapper__lan">
+          <div class="wrapper__lan_title">Init Lan:</div>
+          <div class="wrapper__lan_lans"></div>
+        </div>
+        <div class="wrapper__lan_commitId">
+          <input
+            class="ui-input commitIds"
+            placeholder="Or, 请输入 commitIds, 逗号分隔"
+          />
+        </div>
+        <div class="wrapper__lan_async">
+          <div class="wrapper__lan_title">Async Lan:</div>
+          <div class="wrapper__lan_lans"></div>
+        </div>
+        <button class="ui-button" id="GetFiles" data-type="primary">
+          Get Changes
+        </button>
+        <div class="website-name"></div>
+      </div>
+      <div class="wrapper__right">
+        <div class="wrapper__right_btns">
+          <button class="ui-button compile-code" disabled data-type="danger">
+            Compile
+          </button>
+          <button class="ui-button pull-code" disabled data-type="danger">
+            Pull
+          </button>
+          <button class="ui-button discard-code" disabled data-type="danger">
+            Discard
+          </button>
+          <button class="ui-button merge-code" disabled data-type="danger">
+            Merge
+          </button>
+          <button
+            class="ui-button commit-push-code"
+            disabled
+            data-type="danger"
+          >
+            Commit + Push
+          </button>
+        </div>
+        <div class="wrapper__right_tabs"></div>
+      </div>
+    </div>
+    <script src="https://qidian.gtimg.com/lulu/pure/js/common/all.js"></script>
+    <script src="./js/mergely.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

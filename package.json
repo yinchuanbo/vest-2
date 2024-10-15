@@ -1,0 +1,40 @@
+{
+  "name": "vest",
+  "version": "1.0.3",
+  "description": "vest tool",
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development electron .",
+    "build": "cross-env NODE_ENV=production electron-builder --win portable"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "build": {
+    "appId": "com.iobit.vest",
+    "productName": "vest",
+    "win": {
+      "target": "portable",
+      "icon": "favicon.ico"
+    },
+    "files": [
+      "**/*",
+      "!**/*.map"
+    ],
+    "directories": {
+      "buildResources": "resources"
+    }
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^32.2.0",
+    "electron-builder": "^25.1.7"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "electron-reload": "^2.0.0-alpha.1",
+    "prettier": "^3.3.3",
+    "sass": "^1.79.5",
+    "terser": "^5.34.1"
+  }
+}
