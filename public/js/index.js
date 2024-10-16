@@ -454,7 +454,7 @@ function renderLansHtml() {
     } else {
       html = curFolderLans.map((item, idx) => {
         return `<div class="wrapper__lan_item">
-              <input type="checkbox" id="checkbox${idx}" value="${item}" name="async-lan" />
+              <input type="checkbox" id="checkbox${idx}" value="${item}" ${idx === 0 ? 'disabled' : ''} class="dom-${item}" name="async-lan" />
               <label for="checkbox${idx}" class="ui-checkbox"></label>
               <label for="checkbox${idx}">${item}</label>
             </div>`
@@ -463,6 +463,20 @@ function renderLansHtml() {
     return html;
   }
   wrapperLans.forEach((item, idx) => item.insertAdjacentHTML("beforeend", getHTML(idx)));
+  const initLanSelect = document.querySelector("select[name='lan0']");
+  if (initLanSelect) {
+    initLanSelect.onchange = () => {
+      document.querySelectorAll("[name='async-lan']").forEach(item => {
+        item.checked = false;
+        item.removeAttribute("disabled")
+        document.querySelector('.wrapper__right_tabs').innerHTML = "";
+      })
+      const classes = `.dom-${initLanSelect.value}`
+      console.log("classes", classes)
+      document.querySelector(classes).setAttribute('disabled', true)
+    }
+
+  }
 }
 
 compileCode.onclick = async () => {

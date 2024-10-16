@@ -78,6 +78,10 @@ function getCommitFilesByCommitId(folderPath, commitId, datas) {
         if (!obj[aLan]) obj[aLan] = {};
         for (let j = 0; j < files.length; j++) {
           const f = files[j];
+          const initP = `${folderPath}\\${f.replaceAll("/", "\\")}`;
+          if (!fs.existsSync(initP)) {
+            continue;
+          }
           const cF = f.replace(initLan + '/', aLan + '/')
           const cP = `${folderPath}\\${cF.replaceAll("/", "\\")}`;
           const status = fs.existsSync(cP);
@@ -101,7 +105,7 @@ function getCommitFilesByCommitId(folderPath, commitId, datas) {
           } else {
             obj[aLan][f] = cF;
           }
-          if(f.includes("/img/")) {
+          if (f.includes("/img/")) {
             fs.copyFileSync(`${folderPath}\\${f.replaceAll("/", "\\")}`, destinationPath);
           }
         }
@@ -155,6 +159,10 @@ function getFiles(folderPath, datas) {
         if (!obj[aLan]) obj[aLan] = {};
         for (let j = 0; j < files.length; j++) {
           const f = files[j];
+          const initP = `${folderPath}\\${f.replaceAll("/", "\\")}`;
+          if (!fs.existsSync(initP)) {
+            continue;
+          }
           const cF = f.replace(initLan + '/', aLan + '/')
           const cP = `${folderPath}\\${cF.replaceAll("/", "\\")}`;
           const status = fs.existsSync(cP);
@@ -178,7 +186,7 @@ function getFiles(folderPath, datas) {
           } else {
             obj[aLan][f] = cF;
           }
-          if(f.includes("/img/")) {
+          if (f.includes("/img/")) {
             fs.copyFileSync(`${folderPath}\\${f.replaceAll("/", "\\")}`, destinationPath);
           }
         }

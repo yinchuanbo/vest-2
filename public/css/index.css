@@ -246,6 +246,11 @@ select {
   background-color: #2a80eb;
 }
 
+[name="async-lan"]:disabled + label + label {
+  background-color: #2a80eb;
+  opacity: 0.2;
+}
+
 [name="async-lan"] + label + label {
   width: 40px;
   height: 40px;

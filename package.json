@@ -4,13 +4,14 @@
   "description": "vest tool",
   "main": "./src/main.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development electron .",
-    "build": "cross-env NODE_ENV=production electron-builder --win portable"
+    "start": "electron .",
+    "build": "electron-builder --win portable"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "build": {
+    "asar": false,
     "appId": "com.iobit.vest",
     "productName": "vest",
     "win": {
@@ -23,14 +24,22 @@
     ],
     "directories": {
       "buildResources": "resources"
-    }
+    },
+    "npmRebuild": false,
+    "extraResources": [
+      {
+        "from": "node_modules/@babel/preset-env",
+        "to": "node_modules/@babel/preset-env"
+      }
+    ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "electron": "^32.2.0",
     "electron-builder": "^25.1.7"
   },
   "dependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
     "ejs": "^3.1.10",
     "electron-reload": "^2.0.0-alpha.1",
     "prettier": "^3.3.3",
